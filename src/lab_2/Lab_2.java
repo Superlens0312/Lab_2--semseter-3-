@@ -48,7 +48,7 @@ public class Lab_2 {
         System.out.println(e1.toString());
         
         System.out.println("\nStep 5:");
-        CourseGrades cG = new CourseGrades();
+        CourseGrade cG = new CourseGrade();
         GradedActivity gA = new GradedActivity();
         gA.setScore(85);
         cG.setLab(gA);
