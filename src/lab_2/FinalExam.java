@@ -13,15 +13,16 @@ public class FinalExam extends GradedActivity {
     private double pointsEach;
     private int numMissed;
 
-    public FinalExam(int numQuestions, int numMissed) {
+      public FinalExam(int numQuestions, int numMissed) {
+        if (numQuestions <= 0) throw new IllegalArgumentException("questions > 0");
+        if (numMissed < 0 || numMissed > numQuestions)
+            throw new IllegalArgumentException("0 <= missed <= questions");
         this.numQuestions = numQuestions;
-        this.pointsEach = pointsEach;
         this.numMissed = numMissed;
+        this.pointsEach = 100.0 / numQuestions;
+        double numericScore = 100.0 - (numMissed * pointsEach);
+        setScore(numericScore);
     }
-     public double FinalExam(int questions, int missed) {
-        double numericscore = 100 -(missed * pointsEach);
-        return numericscore;
-     }
 
     public int getNumQuestions() {
         return numQuestions;
@@ -35,7 +36,18 @@ public class FinalExam extends GradedActivity {
         return 100.0/numQuestions;
     }
      
-     
+     @Override
+    public String toString() {
+    double eps = 1e-9;
+    String each = (Math.abs(pointsEach - Math.rint(pointsEach)) < eps)
+            ? String.format("%.0f", pointsEach)
+            : String.format("%.2f", pointsEach);
+    String unit = (Math.abs(pointsEach - 1.0) < eps) ? "point" : "points";
+    return String.format(
+        "Each question is worth %s %s.%nScore: %5.1f    Grade: %c",
+        each, unit, getScore(), getGrade()
+    );
+}
     
     
 }

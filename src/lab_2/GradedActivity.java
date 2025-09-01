@@ -33,4 +33,7 @@ public class GradedActivity {
         }
             return 'F'; 
     }
+    @Override public String toString() {
+        return String.format("Score: %5.1f    Grade: %c", getScore(), getGrade());
+    }
 }

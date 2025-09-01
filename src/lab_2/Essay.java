@@ -31,10 +31,7 @@ public class Essay extends GradedActivity {
     }
 
     public void setScore(double gr, double sp, double len, double cnt) {
-        this.grammer = gr;
-        this.spelling = sp;
-        this.correctLength = len;
-        this.content = cnt;
+        setScore(gr + sp + len + cnt);
     }
 
     public double getGrammer() {
@@ -56,9 +53,6 @@ public class Essay extends GradedActivity {
     public double getScore() {
         return score;
     }
-    
-    
-    
-    
-    
+    @Override public String toString() { return super.toString(); }
 }
+    
