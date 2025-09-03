@@ -53,6 +53,9 @@ public class Essay extends GradedActivity {
     public double getScore() {
         return score;
     }
-    @Override public String toString() { return super.toString(); }
+    @Override 
+    public String toString() { 
+        return super.toString(); 
+    }
 }
     

@@ -17,22 +17,36 @@ public class CourseGrade implements Analyzable {
     public void setEssay(Essay essay)              { grades[2] = essay; }
     public void setFinalExam(FinalExam fe)         { grades[3] = fe; }
 
-    @Override public double getAverage() {
-        double sum = 0; int n = 0;
-        for (GradedActivity g : grades) if (g != null) { sum += g.getScore(); n++; }
-        return n == 0 ? 0.0 : sum / n;
+    @Override 
+    public double getAverage() {
+        double sum = 0;
+        for (GradedActivity grade : grades) {
+            sum += grade.score;
+        }
+           
+        return sum/grades.length;
     }
-    @Override public GradedActivity getHighest() {
-        GradedActivity best = null;
-        for (GradedActivity g : grades)
-            if (g != null && (best == null || g.getScore() > best.getScore())) best = g;
-        return best;
+    
+    @Override 
+    public GradedActivity getHighest() {
+        GradedActivity highest = new GradedActivity();
+        for (int i = 0; i < grades.length - 1; i ++) {
+            if (grades[i].score < grades[i + 1].score) {
+                highest = grades[i + 1];
+            }
+        }
+        return highest;
     }
-    @Override public GradedActivity getLowest() {
-        GradedActivity worst = null;
-        for (GradedActivity g : grades)
-            if (g != null && (worst == null || g.getScore() < worst.getScore())) worst = g;
-        return worst;
+    
+    @Override
+    public GradedActivity getLowest() {
+            GradedActivity lowest = new GradedActivity();
+        for (int i = 0; i < grades.length - 1; i ++) {
+            if (grades[i].score > grades[i + 1].score) {
+                lowest = grades[i + 1];
+            }
+        }
+        return lowest;
     }
 
     @Override

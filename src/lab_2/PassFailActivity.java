@@ -16,10 +16,12 @@ public class PassFailActivity extends GradedActivity {
     }
    
     
-    @Override public char getGrade() { return getScore() >= minPassingScore ? 'P' : 'F'; }
+    @Override public char getGrade() { 
+        return getScore() >= minPassingScore ? 'P' : 'F'; 
+    }
 
     @Override public String toString() {
-        return String.format("Score: %5.1f    Grade: %c", getScore(), getGrade());
+        return String.format("Score: %5.1f    %nGrade: %c", getScore(), getGrade());
     }
 }
 

@@ -44,7 +44,7 @@ public class FinalExam extends GradedActivity {
             : String.format("%.2f", pointsEach);
     String unit = (Math.abs(pointsEach - 1.0) < eps) ? "point" : "points";
     return String.format(
-        "Each question is worth %s %s.%nScore: %5.1f    Grade: %c",
+        "Each question is worth %s %s.%nScore: %5.1f    %nGrade: %c",
         each, unit, getScore(), getGrade()
     );
 }

@@ -32,16 +32,12 @@ public class PassFailExam extends PassFailActivity {
         return numMissed;
     }
     
-     @Override
-    public String toString() {
-    double eps = 1e-9;
-    String each = (Math.abs(pointEach - Math.rint(pointEach)) < eps)
-            ? String.format("%.0f", pointEach)
-            : String.format("%.2f", pointEach);
-    String unit = (Math.abs(pointEach - 1.0) < eps) ? "point" : "points";
+@Override
+public String toString() {
+    String unit = (pointEach == 1.0) ? "point" : "points";
     return String.format(
-        "Each question is worth %s %s.%nScore: %5.1f    Grade: %c",
-        each, unit, getScore(), getGrade()
-    );
+        "Each question is worth %.2f %s.%nScore: %.1f    %nGrade: %c",
+        pointEach, unit, getScore(), getGrade()
+        );
     }
 }
